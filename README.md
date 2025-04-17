@@ -147,10 +147,6 @@ oddstest/
 | Database migrations         | ✅ Complete     |
 | Laravel Queues              | ✅ Complete     |
 | Broadcasting                | 🟡 Nearly Done  |
-| Dockerized setup            | ✅ Complete     |
-| GitHub-friendly project     | ✅ Complete     |
-| README, Diagram, Explanation| ✅ Complete     |
-
 
 ---
 
