@@ -152,5 +152,3 @@ Stefan Minev
 
 ---
 
-> This repo is part of the Oddspedia Laravel Microservices showcase project.
-
