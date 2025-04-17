@@ -26,6 +26,63 @@ oddstest/
 
 ---
 
+## Microservices Architecture & Flow
+```
+                      +-------------------+
+                      |  External Source  |
+                      |  (XML/JSON Feeds) |
+                      +---------+---------+
+                                |
+                                v
+                      +-------------------+             HTTP GET /api/fetch
+                      |  Feed Fetcher     | <--------------------------------+
+                      |  (feed-fetcher)   |                                  |
+                      +-------------------+                                  |
+                                |                                             |
+                                |                                             |
+                                v                                             |
+                      [ Dispatch Job: RawFeedFetched ]                       |
+                                |                                             |
+                                v                                             |
+                      +-------------------+             POST /api/parse      |
+                      |  Feed Parser      | <--------------------------------+
+                      |  (feed-parser)    |                                  |
+                      +-------------------+                                  |
+                                |                                             |
+                                |                                             |
+                                v                                             |
+                      [ Dispatch Job: ParsedFeedReady ]                      |
+                                |                                             |
+                                v                                             |
+                      +------------------------+        POST /api/transform  |
+                      |  Feed Transformer      | <----------------------------+
+                      |  (feed-transformer)    |
+                      +------------------------+
+                                |
+                                |
+                                v
+                    [ Dispatch Job: TransformedFeedReady ]
+                                |
+                                v
+                      +------------------------+         POST /api/process
+                      |  Data Processor        | <---------------------------+
+                      |  (data-processor)      |
+                      +------------------------+
+                                |
+                                v
+                    [ Store in DB, Evaluate, Broadcast ]
+                                |
+                                v
+                      +------------------------+        WEBSOCKET :6001
+                      |      Reverb Service    | <---------------------------+
+                      |  (Laravel Reverb WS)   |
+                      +------------------------+
+
+
+```
+
+---
+
 ## Why the Reverb Service Was Broken and How It Was Fixed
 
 ### Problem
