@@ -83,23 +83,6 @@ oddstest/
 
 ---
 
-## Why the Reverb Service Was Broken and How It Was Fixed
-
-### Problem
-The `reverb-service` consistently failed to boot or respond due to:
-1. **Improper DB connection settings** – `127.0.0.1` from inside the container does not point to the host DB.
-2. **No `.env` cleanup** – The environment file had conflicting ports and references.
-3. **Startup logic errors** – Trying to call `reverb:serve` which does not exist.
-
-### Solution
-- Used `DB_HOST=mysql` in `.env`, matching the service name in `docker-compose.yml`.
-- Corrected `REVERB_PORT=6001` and mapped it correctly to the internal port.
-- Used the correct artisan command: `php artisan reverb:start`
-- Cached config manually to avoid runtime resolution issues.
-- Created the MySQL database manually and ran migrations.
-
----
-
 ## ✅ Project Requirements Coverage
 
 ### ✅ 1. Microservices Architecture
