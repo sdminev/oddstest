@@ -1,5 +1,4 @@
-# Oddspedia Microservices: Reverb Service
-
+# Oddspedia Microservices
 ## Overview
 This repository contains the `reverb-service` from the Oddspedia microservices project, a Laravel WebSocket server powered by Laravel Reverb.
 
