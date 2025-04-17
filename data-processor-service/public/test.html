@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MatchData Reverb Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/pusher-js@7.2.0/dist/web/pusher.min.js"></script>
+</head>
+<body>
+  <h1>📡 Live Match Feed (Reverb)</h1>
+  <pre id="log">Waiting for events...</pre>
+
+  <script>
+    Pusher.logToConsole = true;
+
+    const pusher = new Pusher("localkey", {
+      wsHost: "localhost",
+      wsPort: 6001,
+      forceTLS: false,
+      enabledTransports: ["ws"],
+      disableStats: true
+    });
+
+    const channel = pusher.subscribe("matches");
+
+    channel.bind("MatchDataStored", function(data) {
+      const log = document.getElementById("log");
+      log.textContent = JSON.stringify(data, null, 2);
+      console.log("📥 New match data:", data);
+    });
+  </script>
+</body>
+</html>

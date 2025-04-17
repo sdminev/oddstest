@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed>
+  <match>
+    <match_id>123</match_id>
+    <bookmaker>TestBook</bookmaker>
+    <team>Team A</team>
+    <odds>2.95</odds>
+  </match>
+  <match>
+    <match_id>456</match_id>
+    <bookmaker>ExampleOdds</bookmaker>
+    <team>Team B</team>
+    <odds>3.25</odds>
+  </match>
+</feed>
