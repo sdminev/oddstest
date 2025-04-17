@@ -20,9 +20,6 @@ oddstest/
 ├── feed-transformer-service/
 ├── data-processor-service/
 ├── reverb-service/
-│   ├── .env
-│   ├── config/
-│   └── ...
 ├── docker-compose.yml
 └── mysql (Docker container)
 ```
